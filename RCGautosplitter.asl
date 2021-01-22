@@ -66,17 +66,17 @@ update
 	
 	if (vars.Boss_health_exits == true && current.Boss_health > 0)
 	{
-		if (vars.splitInfo.StartsWith("split0 3")) // 400 hp - normal, old = 5
+		if (vars.splitInfo == "split0 3 5") // 400 hp - normal
 			vars.canSplit = true;
-		else if (vars.splitInfo.StartsWith("split1 7")) // 700 hp - normal, old = 3
+		else if (vars.splitInfo == "split1 7 3") // 700 hp - normal
 			vars.canSplit = true;
-		else if (vars.splitInfo.StartsWith("split2 5")) // 950 hp - normal, old = 37
+		else if (vars.splitInfo == "split2 5 37") // 950 hp - normal
 			vars.canSplit = true;
-		else if (vars.splitInfo.StartsWith("split3 7")) // 850 hp - normal, old = 5
+		else if (vars.splitInfo == "split3 7 5") // 850 hp - normal
 			vars.canSplit = true;
-		else if (vars.splitInfo.StartsWith("split4 3")) // 850 hp - normal, old = 75
+		else if (vars.splitInfo == "split4 3 75") // 850 hp - normal
 			vars.canSplit = true;
-		else if (vars.splitInfo.StartsWith("split5 9")) // 1000 hp - normal, old = 5 29?
+		else if (vars.splitInfo == "split5 9 5") // 1000 hp - normal
 			vars.canSplit = true;
 		else
 		{
