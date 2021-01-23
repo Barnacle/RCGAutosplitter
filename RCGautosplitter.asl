@@ -76,7 +76,7 @@ update
 			vars.canSplit = true;
 		else if (vars.splitInfo == "split4 3 75") // 850 hp - normal
 			vars.canSplit = true;
-		else if (vars.splitInfo == "split5 9 5") // 1000 hp - normal
+		else if (vars.splitInfo == "split5 9 5" || vars.splitInfo == "split5 9 29") // 1000 hp - normal
 			vars.canSplit = true;
 		else
 		{
