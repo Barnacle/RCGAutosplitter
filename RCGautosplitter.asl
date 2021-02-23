@@ -8,8 +8,8 @@ state("RiverCityGirls", "Steam 1.1")
 	int start: "UnityPlayer.dll", 0x1510Ca0, 0x100, 0xA18, 0x78;
 	int lvl: "UnityPlayer.dll", 0x1560760;
 	
-	byte1 Boss_health_check : "UnityPlayer.dll", 0x014D0618, 0xC10, 0x78, 0x980, 0x230, 0x348;
-	int Boss_health : "UnityPlayer.dll", 0x014D0618, 0xC10, 0x78, 0x980, 0x230, 0x348;
+	byte1 Boss_health_check : "UnityPlayer.dll", 0x014D63A8, 0x120, 0x4A0, 0x20, 0x348;
+	int Boss_health : "UnityPlayer.dll", 0x014D63A8, 0x120, 0x4A0, 0x20, 0x348;
 }
 
 state("RiverCityGirls", "Not supported")
@@ -109,6 +109,8 @@ split
 			{
 				vars.currentSplit++;
 				vars.canSplit = false;
+				print(vars.splitInfo);
+				print("health " + current.Boss_health + " " + vars.Boss_fight_failed);
 				return true;
 			}
 		}
