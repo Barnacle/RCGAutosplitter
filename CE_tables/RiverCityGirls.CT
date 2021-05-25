@@ -14,6 +14,19 @@
       <Address>getAddress('UnityPlayer.dll') + getModuleSize('UnityPlayer.dll')</Address>
     </CheatEntry>
     <CheatEntry>
+      <ID>57</ID>
+      <Description>"EventManager"</Description>
+      <LastState Value="228489352" RealAddress="21878BA0"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"mono.dll"+00265110</Address>
+      <Offsets>
+        <Offset>240</Offset>
+        <Offset>48</Offset>
+        <Offset>A0</Offset>
+        <Offset>DD0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
       <ID>48</ID>
       <Description>"MainMenu"</Description>
       <ShowAsSigned>0</ShowAsSigned>

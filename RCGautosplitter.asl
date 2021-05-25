@@ -1,4 +1,4 @@
-// 25 may 2021
+// 26 may 2021
 
 state("RiverCityGirls", "Steam 1.1")
 {
@@ -6,6 +6,8 @@ state("RiverCityGirls", "Steam 1.1")
 	string64  mainmenu :		"UnityPlayer.dll", 0x151E2E0, 0x8, 0x0, 0x30, 0x8, 0x158, 0x38, 0x20, 0x14;
 	string64  music :			"mono.dll", 0x2685E0, 0xA0, 0x2D0, 0x0, 0x18, 0x14;
 	int start :					"mono.dll", 0x265110, 0xCE8, 0x0, 0x18, 0x8;
+	
+	int EventManagerPtr :		"mono.dll", 0x265110, 0xDD0, 0xA0, 0x48;
 	
 	byte1 Boss_health_check :	"UnityPlayer.dll", 0x1542750, 0x648, 0x28, 0x88, 0x288, 0x58, 0x348;
 	int Boss_health :			"UnityPlayer.dll", 0x1542750, 0x648, 0x28, 0x88, 0x288, 0x58, 0x348;
@@ -39,6 +41,8 @@ startup
 	vars.clamp = (Func<float, float, float, float>) ((val, min, max) => {
 		return Math.Max(Math.Min(val, max), min);
 	});
+	
+	vars.SabuStatues = "0/25";
 }
 
 init
@@ -70,12 +74,53 @@ update
 	vars.Player2_Speed = vars.clamp((float)current.speed2, 0, 100);
 	vars.Player2_X = String.Format("{0:0.00}", vars.clamp(current.p2_coord_x, -1000, 1000));
 	vars.Player2_Y = String.Format("{0:0.00}", vars.clamp(current.p2_coord_y, -1000, 1000));
+	
+	
+	// Stats
+	
+	int BasePtr = current.EventManagerPtr + 0x240;
+	int _calledEventList = game.ReadValue<int>(new IntPtr(BasePtr + 0x40));
+	int _items = game.ReadValue<int>(new IntPtr(_calledEventList + 0x10));
+	int _count = game.ReadValue<int>(new IntPtr(_items + 0x18));
+	
+	List<int> Items = new List<int>();
+	
+	for (int i = 1; i <= _count+1; i++)
+	{
+		Items.Add(game.ReadValue<int>(new IntPtr(_items + (0x18 + 0x8 * i))));
+	}
+	
+	foreach (var item in Items)
+	{
+		var EventNamePtr = game.ReadValue<int>(new IntPtr(item + 0x18));
+		var Length = game.ReadValue<int>(new IntPtr(EventNamePtr + 0x10));
+		List<byte> str = new List<byte>();
+		for (int i = 0; i < Length; i++)
+		{
+			str.Add(game.ReadValue<byte>(new IntPtr(EventNamePtr + 0x14 + 0x2 * i)));
+		}
+		var EventName = System.Text.Encoding.Default.GetString(str.ToArray());
+		
+		var Value = game.ReadValue<int>(new IntPtr(EventNamePtr + 0x14));
+		
+		var TimesFiredPtr = game.ReadValue<int>(new IntPtr(item + 0x20));
+		var TimesFired = new IntPtr(TimesFiredPtr).ToString();
+		
+		var MaxFiresPtr = game.ReadValue<int>(new IntPtr(item + 0x24));
+		var MaxFires = new IntPtr(MaxFiresPtr).ToString();
+		
+		if (EventName == "RCG_Event_Sabu_Bust")
+		{
+			vars.SabuStatues = TimesFired.ToString() + "/" + MaxFires.ToString();
+		}
+	}
 }
 
 start
 {
 	if (current.mainmenu == "CharacterSelect" && current.music == "null")
 	{
+		vars.SabuStatues = "0/25";
 		vars.canSplit = false;
 		return true;
 	}
