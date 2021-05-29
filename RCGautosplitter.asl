@@ -35,7 +35,7 @@ state("RiverCityGirls", "Not supported")
 
 startup
 {
-	settings.Add("P100", true, "Split on 100% Completion");
+	settings.Add("P100", false, "Split on 100% Completion");
 	vars.AllMaps = new List<string>{
 		"world_1_gympool",
 		"world_1_lobby",
