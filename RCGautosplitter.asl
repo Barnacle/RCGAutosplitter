@@ -1,4 +1,4 @@
-// 13 june 2021
+// 14 june 2021
 
 state("RiverCityGirls", "Steam 1.1")
 {
@@ -11,7 +11,8 @@ state("RiverCityGirls", "Steam 1.1")
 	uint PersistentDataPtr :		"UnityPlayer.dll", 0x14F1F48, 0x148, 0x178, 0x60;
 	uint EventManagerPtr :			"mono.dll", 0x265110, 0xDD0, 0xA0, 0x48;
 	
-	byte1 Boss_health_check :		"mono.dll", 0x2691D0, 0x18, 0x360, 0x10, 0x158, 0x198, 0x348; // UI_HUD_Boss
+	int UI_HUD_Boss :				"mono.dll", 0x2691D0, 0x18, 0x360, 0x10, 0x158, 0x140;
+	byte1 Boss_health_check :		"mono.dll", 0x2691D0, 0x18, 0x360, 0x10, 0x158, 0x198, 0x348;
 	int Boss_health :				"mono.dll", 0x2691D0, 0x18, 0x360, 0x10, 0x158, 0x198, 0x348;
 	
 	float p1_vel_x :				"mono.dll", 0x265A28, 0x170, 0xC20, 0x18, 0x20, 0x50, 0x10, 0x50, 0x18; // PlayerManager
@@ -496,6 +497,11 @@ split
 			current.Boss_health > 0)
 		{
 			vars.canSplit = true;
+		}
+		
+		if (current.UI_HUD_Boss == 0) // in case of unstable pointer
+		{
+			vars.canSplit = false;
 		}
 	}
 	else
