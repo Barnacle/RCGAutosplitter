@@ -16,7 +16,6 @@
     <CheatEntry>
       <ID>57</ID>
       <Description>"EventManager"</Description>
-      <LastState Value="228489352" RealAddress="21878BA0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"mono.dll"+00265110</Address>
       <Offsets>
@@ -96,18 +95,18 @@
       </Offsets>
     </CheatEntry>
     <CheatEntry>
-      <ID>43</ID>
+      <ID>59</ID>
       <Description>"Boss"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>"UnityPlayer.dll"+1542750</Address>
+      <Address>"mono.dll"+0026ABD8</Address>
       <Offsets>
         <Offset>348</Offset>
-        <Offset>58</Offset>
-        <Offset>288</Offset>
-        <Offset>88</Offset>
-        <Offset>28</Offset>
-        <Offset>648</Offset>
+        <Offset>198</Offset>
+        <Offset>158</Offset>
+        <Offset>10</Offset>
+        <Offset>360</Offset>
+        <Offset>158</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -298,4 +297,12 @@
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
+  <Structures StructVersion="2">
+    <Structure Name="String" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="16" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000010" Description="Length" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="20" Vartype="Unicode String" Bytesize="128" OffsetHex="00000014" Description="Value" DisplayMethod="Unsigned Integer"/>
+      </Elements>
+    </Structure>
+  </Structures>
 </CheatTable>
