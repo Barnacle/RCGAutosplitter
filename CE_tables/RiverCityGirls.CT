@@ -95,18 +95,20 @@
       </Offsets>
     </CheatEntry>
     <CheatEntry>
-      <ID>59</ID>
+      <ID>61</ID>
       <Description>"Boss"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>"mono.dll"+0026ABD8</Address>
+      <Address>"UnityPlayer.dll"+01511C28</Address>
       <Offsets>
         <Offset>348</Offset>
-        <Offset>198</Offset>
-        <Offset>158</Offset>
-        <Offset>10</Offset>
-        <Offset>360</Offset>
-        <Offset>158</Offset>
+        <Offset>F8</Offset>
+        <Offset>1A0</Offset>
+        <Offset>90</Offset>
+        <Offset>120</Offset>
+        <Offset>D0</Offset>
+        <Offset>20</Offset>
+        <Offset>8</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
