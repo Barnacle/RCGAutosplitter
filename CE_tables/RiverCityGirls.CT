@@ -58,9 +58,9 @@
       <Address>"mono.dll"+00501AC8</Address>
       <Offsets>
         <Offset>14</Offset>
-        <Offset>30</Offset>
-        <Offset>10</Offset>
-        <Offset>480</Offset>
+        <Offset>70</Offset>
+        <Offset>0</Offset>
+        <Offset>368</Offset>
         <Offset>20</Offset>
       </Offsets>
     </CheatEntry>

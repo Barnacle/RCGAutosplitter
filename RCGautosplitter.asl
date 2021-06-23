@@ -1,14 +1,14 @@
-// 16 june 2021
+// 24 june 2021
 
-state("RiverCityGirls", "Steam 1.1")
+state("RiverCityGirls")
 {
-	string64 scene :				"mono.dll", 0x501AC8, 0x20, 0x480, 0x10, 0x30, 0x14; // MapDataManager
+	string64 scene :				"mono.dll", 0x501AC8, 0x20, 0x368, 0x0, 0x70, 0x14; // MapDataManager
 	string64  mainmenu :			"UnityPlayer.dll", 0x151E2E0, 0x8, 0x0, 0x30, 0x8, 0x158, 0x38, 0x20, 0x14;
 	string64  music :				"mono.dll", 0x2685E0, 0xA0, 0x2D0, 0x0, 0x18, 0x14; // MusicManager
 	int start :						"mono.dll", 0x265110, 0xCE8, 0x0, 0x18, 0x8; // unused
 	
 	uint PlayerGlobalInventoryPtr : "mono.dll", 0x268698, 0x70, 0x478;
-	uint PersistentDataPtr :		"UnityPlayer.dll", 0x14F1F48, 0x148, 0x178, 0x60;
+	uint PersistentDataPtr :		"UnityPlayer.dll", 0x14F1F48, 0x148, 0x178, 0x60; // need fix in 1.0
 	uint EventManagerPtr :			"mono.dll", 0x265110, 0xDD0, 0xA0, 0x48;
 	
 	int UI_HUD_Boss :				"UnityPlayer.dll", 0x1511C28, 0x8, 0x20, 0xD0, 0x120, 0x90, 0x1A0, 0xA0;
@@ -26,10 +26,6 @@ state("RiverCityGirls", "Steam 1.1")
 	float p2_coord_x : 				"mono.dll", 0x265A28, 0x170, 0xC20, 0x18, 0x28, 0x50, 0x10, 0x350;
 	float p2_coord_y : 				"mono.dll", 0x265A28, 0x170, 0xC20, 0x18, 0x28, 0x50, 0x10, 0x358;
 	bool p2_coord_grounded :		"mono.dll", 0x265A28, 0x170, 0xC20, 0x18, 0x28, 0x50, 0x10, 0x35C;
-}
-
-state("RiverCityGirls", "Not supported")
-{
 }
 
 startup
@@ -153,20 +149,10 @@ startup
 
 init
 {
-	// Detects current game version.
-	if (modules.First().ModuleMemorySize == 671744)
-	{
-		print("Steam 1.1");
-		version = "Steam 1.1";
-	}
-	else
-	{
-		version = "Not supported";
-	}
 }
 
 update
-{	
+{
 	current.speed_xpow = (float)Math.Pow(current.p1_vel_x, 2);
 	current.speed_ypow = (float)Math.Pow(current.p1_vel_y, 2);
 	current.speed = Math.Round((Decimal)(float)Math.Sqrt(current.speed_xpow + current.speed_ypow), 2, MidpointRounding.AwayFromZero);
